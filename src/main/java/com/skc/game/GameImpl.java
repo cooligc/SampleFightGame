@@ -23,10 +23,9 @@ public class GameImpl implements Game {
 
 	static {
 		initialExplorer.add("1. Play a new Game");
-		initialExplorer.add("2. Save the Current Game");
-		initialExplorer.add("3. Resume the old Game");
-		initialExplorer.add("4. Current Score");
-		initialExplorer.add("5. Highest Score");
+		initialExplorer.add("2. Resume the old Game");
+		initialExplorer.add("3. Current Score");
+		initialExplorer.add("4. Highest Score");
 		
 	}
 
@@ -36,7 +35,6 @@ public class GameImpl implements Game {
 	public void startGame() {
 
 		Scanner scanner = new Scanner(System.in);
-		LogUtil.log("Hello user, Welcome to the ");
 		LogUtil.log("Please enter your character Name ");
 		String name = scanner.next();
 		LogUtil.log("Welcome " + name + " to the world of Fight Club");
@@ -48,7 +46,7 @@ public class GameImpl implements Game {
 
 		Integer selection = scanner.nextInt();
 
-		if (selection > 5 || selection < 1) {
+		if (selection > 4 || selection < 1) {
 			LogUtil.confirmExit();
 		}
 
@@ -62,15 +60,12 @@ public class GameImpl implements Game {
 			play.playGame(name,Boolean.FALSE);
 			break;
 		case 2:
-			System.out.println("Not yet implemented");
-			break;
-		case 3:
 			play.resumeGame(name);
 			break;
-		case 4:
+		case 3:
 			play.lastScore(name);
 			break;
-		case 5:
+		case 4:
 			play.highestScore(name);
 			break;
 		}

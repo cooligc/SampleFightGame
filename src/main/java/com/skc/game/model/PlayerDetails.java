@@ -4,6 +4,7 @@
 package com.skc.game.model;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * @author sitakant
@@ -19,6 +20,10 @@ public class PlayerDetails implements Serializable{
 	private Integer highestScore;
 	private Integer lastScore;
 	private Boolean isSaved;
+	private Integer bout;
+	private Integer currentPos;
+	private Map<Integer,String> boutDetails; 
+	
 	/**
 	 * @return the characterName
 	 */
@@ -67,15 +72,40 @@ public class PlayerDetails implements Serializable{
 	public void setIsSaved(Boolean isSaved) {
 		this.isSaved = isSaved;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * @return the bout
 	 */
-	@Override
-	public String toString() {
-		return "PlayerDetails [characterName=" + characterName + ", highestScore=" + highestScore + ", lastScore="
-				+ lastScore + ", isSaved=" + isSaved + "]";
+	public Integer getBout() {
+		return bout;
 	}
-	
-	
-	
+	/**
+	 * @param bout the bout to set
+	 */
+	public void setBout(Integer bout) {
+		this.bout = bout;
+	}
+	/**
+	 * @return the currentPos
+	 */
+	public Integer getCurrentPos() {
+		return currentPos;
+	}
+	/**
+	 * @param currentPos the currentPos to set
+	 */
+	public void setCurrentPos(Integer currentPos) {
+		this.currentPos = currentPos;
+	}
+	/**
+	 * @return the boutDetails
+	 */
+	public Map<Integer,String> getBoutDetails() {
+		return boutDetails;
+	}
+	/**
+	 * @param boutDetails the boutDetails to set
+	 */
+	public void setBoutDetails(Map<Integer,String> boutDetails) {
+		this.boutDetails = boutDetails;
+	}
 }

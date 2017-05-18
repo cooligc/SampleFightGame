@@ -12,7 +12,7 @@ import java.util.Random;
 public class RandomStringGenerator {
 
 	private static final String CHAR_LIST = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	private static final int RANDOM_STRING_LENGTH = 10;
+	private static final int RANDOM_STRING_LENGTH = 13;
 
 	/**
 	 * This method generates random string
