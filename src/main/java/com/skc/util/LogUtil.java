@@ -7,7 +7,7 @@ package com.skc.util;
  * @author sitakant
  *
  */
-public class LogUtil {
+public class  LogUtil{
 	
 	
 	public static void log(Object o){
@@ -30,6 +30,10 @@ public class LogUtil {
 
 	public static void successPlayed(String name,Integer score) {
 		LogUtil.log(name + " , Thanks for playing. Your current score is "+score);
+	}
+	
+	public static void printInvalidCharName(){
+		LogUtil.log("Entered Player is not found. Please try again by entering a valid character.");
 	}
 
 }

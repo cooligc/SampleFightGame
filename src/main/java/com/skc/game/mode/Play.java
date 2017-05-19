@@ -12,7 +12,7 @@ public interface Play {
 
 	void resumeGame(String name);
 
-	void lastScore(String name);
+	Integer lastScore(String name);
 
-	void highestScore(String name);
+	Integer highestScore(String name);
 }

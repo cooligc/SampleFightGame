@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import com.skc.game.model.PlayerDetails;
 import com.skc.game.repo.PlayerRepository;
 import com.skc.util.LogUtil;
+import com.skc.util.ObjectUtils;
 import com.skc.util.RandomStringGenerator;
 
 /**
@@ -40,7 +41,7 @@ public class PlayImpl implements Play {
 		PlayerDetails playerDetails = null;
 		Integer score = Integer.valueOf(0);
 		Integer currentPos = Integer.valueOf(0);
-		Integer noBout = Integer.valueOf(0);
+		Integer noBout = Integer.valueOf(1);
 		Integer botScore = Integer.valueOf(0);
 		Integer _points = 0;
 		Map<Integer,String> boutDetails = null;
@@ -79,7 +80,7 @@ public class PlayImpl implements Play {
 				}else{
 					score = Integer.valueOf(0);
 					botScore=Integer.valueOf(0);
-					LogUtil.log(noBout + " Bout has over");
+					LogUtil.log(noBout+ " Bout has over");
 					LogUtil.log("Now, Going for next bout ");
 					LogUtil.log("----------------------------");
 				}
@@ -95,7 +96,7 @@ public class PlayImpl implements Play {
 				String status = scanner.nextLine();
 				if(status.equalsIgnoreCase("y")){
 					playerDetails.setIsSaved(Boolean.TRUE);
-					playerDetails.setBout(++noBout);
+					playerDetails.setBout(noBout);
 					playerDetails.setCurrentPos(currentPos);
 					boutDetails.put(noBout,score+","+botScore);
 					playerDetails.setBoutDetails(boutDetails);
@@ -109,7 +110,7 @@ public class PlayImpl implements Play {
 				//TODO Have to save the current execution
 				playerRepository.createPlayer(playerDetails);
 				LogUtil.successPlayed(name,playerDetails.getLastScore());
-				System.exit(0);
+				throw new GameException("Game saved properly");
 			}
 			
 			
@@ -166,20 +167,20 @@ public class PlayImpl implements Play {
 		}
 		playerRepository.createPlayer(playerDetails);
 		LogUtil.log("Thanks for playing the Game ");
-		System.exit(0);
+		throw new GameException("--- END ---");
 	}
 
 	@Override
 	public void resumeGame(String name) {
 		PlayerDetails playerDetails = playerRepository.getPlayer(name);
-		if(null == playerDetails){
-			LogUtil.log("Entered Player is not found. Please try again by entering a valid character.");
-			System.exit(0);
+		if(ObjectUtils.checkNull(playerDetails)){
+			LogUtil.printInvalidCharName();
+			throw new GameException("Invalid Character Name");
 		}
 		
 		if(!playerDetails.getIsSaved()){
 			LogUtil.log("You have not saved the game yet. So, resume cannot be happened. Please try again");
-			System.exit(0);
+			throw new GameException("Unable to Resume Game");
 		}
 		
 		//TODO Need to retrieve the data from redis and resume the game
@@ -187,23 +188,25 @@ public class PlayImpl implements Play {
 	}
 
 	@Override
-	public void lastScore(String name) {
+	public Integer lastScore(String name) {
 		PlayerDetails playerDetails = playerRepository.getPlayer(name);
-		if(null == playerDetails){
-			LogUtil.log("Entered Player is not found. Please try again by entering a valid character.");
-			System.exit(0);
+		if(ObjectUtils.checkNull(playerDetails)){
+			LogUtil.printInvalidCharName();
+			throw new GameException("Invalid Character Name");
 		}
 		LogUtil.log(name+" , Your last score is "+playerDetails.getLastScore());
+		return playerDetails.getLastScore();
 	}
 
 	@Override
-	public void highestScore(String name) {
+	public Integer highestScore(String name) {
 		PlayerDetails playerDetails = playerRepository.getPlayer(name);
-		if(null == playerDetails){
-			LogUtil.log("Entered Player is not found. Please try again by entering a valid character.");
-			System.exit(0);
+		if(ObjectUtils.checkNull(playerDetails)){
+			LogUtil.printInvalidCharName();
+			throw new GameException("Invalid Character Name");
 		}
 		LogUtil.log(name+" , Your highest score is "+playerDetails.getHighestScore());
+		return playerDetails.getHighestScore();
 	}
 
 }

@@ -23,8 +23,9 @@ public class PlayerRepositoryImpl implements PlayerRepository{
 	
 
 	@Override
-	public void createPlayer(PlayerDetails details) {
+	public PlayerDetails createPlayer(PlayerDetails details) {
 		redisTemplate.opsForHash().put(PLAYER_KEY, details.getCharacterName(), details);
+		return details;
 	}
 
 	@Override
