@@ -1,37 +1,21 @@
-## Welcome to GitHub Pages
+# Welcome to Fight Club
 
-You can use the [editor on GitHub](https://github.com/cooligc/SampleFightGame/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This is a Command Line Interface game where you can fight with the Robot.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## How to Play
+Each **Capital alphabet** is containing a Punch (either from gammer or from robot). You need to enter the alphabet to fight with.
 
-### Markdown
+## Before Play, 
+### You need to install
+  - Java8 or more
+  - Maven 3 or more
+  - Redis 3.2.8 or more
+### You need to configure
+  - use [redis.conf](https://github.com/cooligc/SampleFightGame/blob/master/redis.conf) to start your redis
+  - Set the Application specification configuration
+    1.  Change the redis.host property with the host ip on [config.properties](https://github.com/cooligc/SampleFightGame/blob/master/src/main/resources/config.properties) where you have installed 
+    2.  Set fight.in.bout(No of fight that you want to play in one bout . Must be an odd number) and total.no.bout(No of bout that you want to play . Must be an odd number) on [config.properties](https://github.com/cooligc/SampleFightGame/blob/master/src/main/resources/config.properties) based on your selection
+ -  Run [app.App](https://github.com/cooligc/SampleFightGame/blob/master/src/main/java/app/App.java) to start the application
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/cooligc/SampleFightGame/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+[click here](https://cooligc.github.io/coverage-cfg/) to see the code coverage of the application
