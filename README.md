@@ -13,8 +13,8 @@ Each **Capital alphabet** is containing a Punch (either from gammer or from robo
 ### You need to configure
   - use [redis.conf](https://github.com/cooligc/SampleFightGame/blob/master/redis.conf) to start your redis
   - Set the Application specification configuration
-    1.  Change the redis.host property with the host ip on [config.properties](https://github.com/cooligc/SampleFightGame/blob/master/src/main/resources/config.properties) where you have installed 
-    2.  Set fight.in.bout(No of fight that you want to play in one bout . Must be an odd number) and total.no.bout(No of bout that you want to play . Must be an odd number) on [config.properties](https://github.com/cooligc/SampleFightGame/blob/master/src/main/resources/config.properties) based on your selection
+    1.  Change the redis.host property with the host ip on [config.properties](https://github.com/cooligc/SampleFightGame/blob/master/src/main/resources/config.properties) where you have installed redis
+    2.  Set **fight.in.bout**( No of fight that you want to play in one bout . Must be an odd number) and **total.no.bout** (No of bout that you want to play . Must be an odd number) on [config.properties](https://github.com/cooligc/SampleFightGame/blob/master/src/main/resources/config.properties) based on your selection
  -  Run [app.App](https://github.com/cooligc/SampleFightGame/blob/master/src/main/java/app/App.java) to start the application
 
 
